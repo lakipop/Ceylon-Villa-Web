@@ -44,16 +44,27 @@ export function Footer() {
                   </a>
                 </p>
               ) : null}
-              <p className="mt-2">
-                <a
-                  href={WHATSAPP_HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-fg underline underline-offset-4"
-                >
-                  {t.footer.whatsapp} {WHATSAPP_NUMBER}
-                </a>
-              </p>
+              <ul className="mt-4 space-y-3">
+                {SITE.contacts.map((person) => (
+                  <li key={person.email} className="text-small">
+                    <span className="eyebrow mr-2">{person.role}</span>
+                    <span className="text-fg">{person.name}</span>
+                    <div className="mt-0.5 flex flex-wrap gap-x-3 gap-y-1">
+                      <a
+                        href={`https://wa.me/${person.phone.replace(/[^0-9]/g, "")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-fg underline underline-offset-4"
+                      >
+                        {person.phone}
+                      </a>
+                      <a href={`mailto:${person.email}`} className="text-muted underline underline-offset-4 hover:text-fg">
+                        {person.email}
+                      </a>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </address>
           </div>
 

@@ -98,6 +98,7 @@ export const en = {
     errorNotConfigured: "Enquiries are not switched on yet. Please use one of the listings below.",
     errorRateLimit: "Too many attempts. Please wait a minute and try again.",
     listings: "Book on",
+    directContact: "Direct contact",
     validation: {
       nameRequired: "Enter your name",
       emailInvalid: "Enter a valid email",

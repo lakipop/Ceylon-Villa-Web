@@ -102,6 +102,33 @@ export function Enquiry() {
               </a>
             </div>
           </div>
+
+          <div className="mt-10 border-t hairline pt-8">
+            <p className="eyebrow">{t.enquiry.directContact}</p>
+            <ul className="mt-5 grid gap-5 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+              {SITE.contacts.map((person) => (
+                <li key={person.email} className="space-y-1">
+                  <p className="eyebrow">{person.role}</p>
+                  <p className="display text-[length:var(--text-lead)] leading-tight text-fg">{person.name}</p>
+                  <p className="text-small">
+                    <a
+                      href={`https://wa.me/${person.phone.replace(/[^0-9]/g, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-fg underline underline-offset-4"
+                    >
+                      {person.phone}
+                    </a>
+                  </p>
+                  <p className="text-small">
+                    <a href={`mailto:${person.email}`} className="text-muted underline underline-offset-4 hover:text-fg">
+                      {person.email}
+                    </a>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Reveal>
 
         <Reveal kind="slide-right" delay={0.08} className="md:col-span-6 md:col-start-7">

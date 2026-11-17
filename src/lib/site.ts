@@ -11,6 +11,20 @@ export const SITE = {
   },
   rooms: 6,
   whatsapp: "+1 (646) 294-5176",
+  contacts: [
+    {
+      role: "Owner",
+      name: "Neil Weerasingha",
+      phone: "+1 (646) 294-5176",
+      email: "neil.weerasingha@gmail.com",
+    },
+    {
+      role: "Co-Owner",
+      name: "Vishva Weerasingha",
+      phone: "+1 (347) 740-6374",
+      email: "Vishvaweera@gmail.com",
+    },
+  ],
   licence: {
     authority: "Sri Lanka Tourism Development Authority",
     category: "Rented Apartment / Home, Deluxe",
