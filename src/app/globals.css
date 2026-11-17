@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens: Palette 1 (Soft Alabaster & Ceylon Gold).
+   100% global tokens. Zero hardcoded colors outside this file.
+------------------------------------------------------------------- */
+@theme {
+  --color-bg: #faf8f4;
+  --color-surface: #f2ede4;
+  --color-fg: #181614;
+  --color-muted: #5c574f;
+  --color-accent: #9a7218;
+  --color-accent-bright: #d4a942;
+  --color-border: #e4ddd0;
+  --color-alert: #a3281a;
+  --color-media-fg: #faf8f4;
+  --color-scrim: #181614;
+
+  /* Type */
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  --text-giant: clamp(2.75rem, 6.5vw, 5.5rem);
+  --text-huge: clamp(2.25rem, 4.8vw, 4rem);
+  --text-title: clamp(1.75rem, 3.4vw, 3rem);
+  --text-lead: clamp(1.125rem, 1.8vw, 1.5rem);
+  --text-body: clamp(0.95rem, 1vw, 1.0625rem);
+  --text-small: 0.75rem;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Layout */
+  --spacing-gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --spacing-section: clamp(4rem, 7vw, 6.5rem);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .eyebrow {
+    font-size: var(--text-small);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .gutter {
+    margin-inline: auto;
+    max-width: 82rem;
+    padding-inline: var(--spacing-gutter);
+  }
+
+  .hairline {
+    border-color: var(--color-border);
+  }
+
+  .arch {
+    border-top-left-radius: 999px;
+    border-top-right-radius: 999px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
