@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description: t.meta.description,
     url: siteUrl,
     siteName: SITE.name,
-    images: [{ url: "/media/hero-poster.jpg", width: 1280, height: 720 }],
+    images: [{ url: "/media/hero-villa.jpg", width: 1920, height: 1080 }],
     type: "website",
   },
   twitter: { card: "summary_large_image", title: t.meta.title, description: t.meta.description },
@@ -46,7 +46,7 @@ const jsonLd = {
   "@type": "LodgingBusiness",
   name: SITE.name,
   url: siteUrl,
-  image: `${siteUrl}/media/hero-poster.jpg`,
+  image: `${siteUrl}/media/hero-villa.jpg`,
   numberOfRooms: SITE.rooms,
   address: {
     "@type": "PostalAddress",

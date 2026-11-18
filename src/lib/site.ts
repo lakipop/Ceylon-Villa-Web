@@ -42,6 +42,7 @@ export const SITE = {
 
 export const MEDIA = {
   logo: "/media/logo.png",
+  heroImage: "/media/hero-villa.jpg",
   heroVideo: "/media/hero.mp4",
   heroPoster: "/media/hero-poster.jpg",
   film: "/media/film.mp4",
@@ -54,6 +55,13 @@ export interface GalleryImage {
   readonly height: number;
   readonly labelKey: string;
 }
+
+export const HERO_SIDE_IMAGES: readonly GalleryImage[] = [
+  { src: "/media/gallery/matara-hill.jpg", width: 1280, height: 960, labelKey: "coast.hill" },
+  { src: "/media/gallery/matara-lighthouse.jpg", width: 1280, height: 960, labelKey: "coast.lighthouse" },
+  { src: "/media/gallery/matara-beach.jpg", width: 1280, height: 720, labelKey: "coast.beach" },
+  { src: "/media/gallery/matara-bay.jpg", width: 1280, height: 852, labelKey: "coast.bay" },
+];
 
 export const COAST_IMAGES: readonly GalleryImage[] = [
   { src: "/media/gallery/coast-1.jpg", width: 1280, height: 720, labelKey: "coast.a1" },

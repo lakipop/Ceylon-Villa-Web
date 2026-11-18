@@ -21,6 +21,7 @@ export const en = {
     place: "Matara, Sri Lanka",
     scroll: "Scroll",
     videoLabel: "Aerial footage of the Matara coast",
+    imageLabel: "Exterior view of Ceylon Villa in Matara, Sri Lanka",
   },
   statement: {
     lead: "Six rooms. One address in Matara.",
@@ -67,6 +68,11 @@ export const en = {
     a7: "Sunset over the headland",
     a8: "Waves rolling in",
     a9: "Palms along the water",
+    palms: "Coconut Tree Hill near Matara",
+    lighthouse: "Dondra Head Lighthouse, Matara",
+    beach: "Sunset over Matara beach",
+    bay: "Southern bay panorama near Matara",
+    hill: "Aerial view of Coconut Tree Hill and turquoise sea",
   },
   licence: {
     title: "Licensed",

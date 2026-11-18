@@ -9,7 +9,7 @@ import {
 } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { MEDIA, COAST_IMAGES } from "@/lib/site";
+import { MEDIA, HERO_SIDE_IMAGES } from "@/lib/site";
 import { getMessage, t } from "@/lib/i18n";
 import {
   DURATION,
@@ -20,7 +20,7 @@ import {
 } from "@/lib/motion";
 
 const WIDE_QUERY = "(min-width: 768px)";
-const SIDE_IMAGES = COAST_IMAGES.filter((_, idx) => idx === 1 || idx === 2 || idx === 3 || idx === 5);
+const SIDE_IMAGES = HERO_SIDE_IMAGES;
 const INSET_TOP = 12;
 const INSET_BOTTOM = 12;
 const INSET_X_WIDE = 27;
@@ -70,16 +70,13 @@ export function Hero() {
     >
       <div className="sticky top-16 h-[calc(100svh-4rem)] overflow-hidden">
         <motion.div className="absolute inset-0" style={reduced ? undefined : { clipPath }}>
-          <video
-            className="h-full w-full object-cover"
-            src={MEDIA.heroVideo}
-            poster={MEDIA.heroPoster}
-            autoPlay={!reduced}
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label={t.hero.videoLabel}
+          <Image
+            src={MEDIA.heroImage}
+            alt={t.hero.imageLabel}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-scrim/65 via-scrim/15 to-scrim/25" />
         </motion.div>
