@@ -42,6 +42,7 @@
     color: var(--color-fg);
     -webkit-text-size-adjust: 100%;
     color-scheme: light;
+    overflow-x: clip;
   }
 
   html.lenis,

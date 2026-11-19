@@ -66,7 +66,7 @@ export function Hero() {
       ref={sectionRef}
       id="top"
       style={{ height: `${HERO_SCROLL_VH * 100}svh` }}
-      className="relative bg-bg pt-16"
+      className="relative overflow-x-clip bg-bg pt-16"
     >
       <div className="sticky top-16 h-[calc(100svh-4rem)] overflow-hidden">
         <motion.div className="absolute inset-0" style={reduced ? undefined : { clipPath }}>
@@ -79,6 +79,30 @@ export function Hero() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-scrim/65 via-scrim/15 to-scrim/25" />
+
+          <motion.h1
+            aria-label={t.hero.word}
+            className="display absolute inset-x-0 bottom-[13svh] px-4 whitespace-nowrap text-center text-[clamp(2.25rem,7.2vw,9.5rem)] text-media-fg"
+            style={reduced ? undefined : { opacity: wordOpacity, y: wordY }}
+          >
+            <span aria-hidden="true" className="inline-flex overflow-hidden pb-[0.12em]">
+              {letters.map((letter, index) => (
+                <motion.span
+                  key={`${letter}-${index}`}
+                  className="inline-block"
+                  initial={reduced ? false : { y: "110%" }}
+                  animate={{ y: "0%" }}
+                  transition={{
+                    duration: DURATION.base,
+                    ease: EASE_OUT_EXPO,
+                    delay: 0.15 + index * (STAGGER * 0.6),
+                  }}
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </span>
+          </motion.h1>
         </motion.div>
 
         {wide && !reduced ? (
@@ -87,30 +111,6 @@ export function Hero() {
             <SideColumn side="right" x={rightX} opacity={sideOpacity} />
           </>
         ) : null}
-
-        <motion.h1
-          aria-label={t.hero.word}
-          className="display absolute inset-x-0 bottom-[7svh] whitespace-nowrap text-center text-[clamp(3rem,10vw,9.5rem)] text-media-fg"
-          style={reduced ? undefined : { opacity: wordOpacity, y: wordY }}
-        >
-          <span aria-hidden="true" className="inline-flex overflow-hidden pb-[0.12em]">
-            {letters.map((letter, index) => (
-              <motion.span
-                key={`${letter}-${index}`}
-                className="inline-block"
-                initial={reduced ? false : { y: "110%" }}
-                animate={{ y: "0%" }}
-                transition={{
-                  duration: DURATION.base,
-                  ease: EASE_OUT_EXPO,
-                  delay: 0.15 + index * (STAGGER * 0.6),
-                }}
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
-            ))}
-          </span>
-        </motion.h1>
 
         <motion.p
           className="eyebrow absolute inset-x-0 bottom-4 text-center"

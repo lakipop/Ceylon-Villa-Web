@@ -31,16 +31,16 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b hairline bg-bg/85 text-fg backdrop-blur-md">
-      <div className="gutter flex items-center justify-between py-3">
-        <a href="#top" aria-label={t.nav.home} className="flex items-center gap-3">
-          <span className="block h-10 w-10 overflow-hidden rounded-full border hairline">
+    <header className="fixed inset-x-0 top-0 z-50 w-full max-w-full overflow-x-clip border-b hairline bg-bg/85 text-fg backdrop-blur-md">
+      <div className="gutter flex items-center justify-between gap-4 py-3">
+        <a href="#top" aria-label={t.nav.home} className="flex shrink-0 items-center gap-3">
+          <span className="block h-10 w-10 shrink-0 overflow-hidden rounded-full border hairline">
             <Image src={MEDIA.logo} alt="" width={80} height={80} className="h-full w-full object-cover" priority />
           </span>
           <span className="display text-[length:var(--text-lead)] leading-none text-fg">{t.hero.word}</span>
         </a>
 
-        <nav aria-label={t.nav.primary} className="hidden items-center gap-8 md:flex">
+        <nav aria-label={t.nav.primary} className="hidden items-center gap-4 lg:gap-8 md:flex">
           {LINKS.map((link) => (
             <a key={link.href} href={link.href} className={LINK_CLASS}>
               {link.label}
@@ -48,7 +48,7 @@ export function Header() {
           ))}
           <a
             href="#enquire"
-            className="border border-fg px-5 py-2.5 text-small tracking-[0.16em] uppercase text-fg transition-colors duration-300 hover:bg-fg hover:text-bg focus-visible:bg-fg focus-visible:text-bg active:scale-95"
+            className="shrink-0 border border-fg px-3.5 py-2.5 text-small tracking-[0.16em] uppercase text-fg transition-colors duration-300 hover:bg-fg hover:text-bg focus-visible:bg-fg focus-visible:text-bg active:scale-95 lg:px-5"
           >
             {t.nav.enquire}
           </a>
@@ -56,7 +56,7 @@ export function Header() {
 
         <button
           type="button"
-          className="p-2.5 text-fg md:hidden"
+          className="shrink-0 p-2.5 text-fg md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? t.nav.menuClose : t.nav.menuOpen}
