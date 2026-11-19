@@ -82,7 +82,7 @@ export function Hero() {
 
           <motion.h1
             aria-label={t.hero.word}
-            className="display absolute inset-x-0 bottom-[13svh] px-4 whitespace-nowrap text-center text-[clamp(2.25rem,7.2vw,9.5rem)] text-media-fg"
+            className="display absolute inset-x-0 bottom-[13svh] px-4 whitespace-nowrap text-center text-[clamp(2.85rem,8vw,9.5rem)] text-media-fg"
             style={reduced ? undefined : { opacity: wordOpacity, y: wordY }}
           >
             <span aria-hidden="true" className="inline-flex overflow-hidden pb-[0.12em]">

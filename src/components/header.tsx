@@ -31,47 +31,49 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full max-w-full overflow-x-clip border-b hairline bg-bg/85 text-fg backdrop-blur-md">
-      <div className="gutter flex items-center justify-between gap-4 py-3">
-        <a href="#top" aria-label={t.nav.home} className="flex shrink-0 items-center gap-3">
-          <span className="block h-10 w-10 shrink-0 overflow-hidden rounded-full border hairline">
-            <Image src={MEDIA.logo} alt="" width={80} height={80} className="h-full w-full object-cover" priority />
-          </span>
-          <span className="display text-[length:var(--text-lead)] leading-none text-fg">{t.hero.word}</span>
-        </a>
-
-        <nav aria-label={t.nav.primary} className="hidden items-center gap-4 lg:gap-8 md:flex">
-          {LINKS.map((link) => (
-            <a key={link.href} href={link.href} className={LINK_CLASS}>
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#enquire"
-            className="shrink-0 border border-fg px-3.5 py-2.5 text-small tracking-[0.16em] uppercase text-fg transition-colors duration-300 hover:bg-fg hover:text-bg focus-visible:bg-fg focus-visible:text-bg active:scale-95 lg:px-5"
-          >
-            {t.nav.enquire}
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 w-full max-w-full border-b hairline bg-bg/85 text-fg backdrop-blur-md">
+        <div className="gutter flex items-center justify-between gap-4 py-3">
+          <a href="#top" aria-label={t.nav.home} className="flex shrink-0 items-center gap-3">
+            <span className="block h-10 w-10 shrink-0 overflow-hidden rounded-full border hairline">
+              <Image src={MEDIA.logo} alt="" width={80} height={80} className="h-full w-full object-cover" priority />
+            </span>
+            <span className="display text-[length:var(--text-lead)] leading-none text-fg">{t.hero.word}</span>
           </a>
-        </nav>
 
-        <button
-          type="button"
-          className="shrink-0 p-2.5 text-fg md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? t.nav.menuClose : t.nav.menuOpen}
-          onClick={() => setOpen((value) => !value)}
-        >
-          {open ? <X aria-hidden="true" size={24} /> : <Menu aria-hidden="true" size={24} />}
-        </button>
-      </div>
+          <nav aria-label={t.nav.primary} className="hidden items-center gap-4 lg:gap-8 md:flex">
+            {LINKS.map((link) => (
+              <a key={link.href} href={link.href} className={LINK_CLASS}>
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#enquire"
+              className="shrink-0 border border-fg px-3.5 py-2.5 text-small tracking-[0.16em] uppercase text-fg transition-colors duration-300 hover:bg-fg hover:text-bg focus-visible:bg-fg focus-visible:text-bg active:scale-95 lg:px-5"
+            >
+              {t.nav.enquire}
+            </a>
+          </nav>
+
+          <button
+            type="button"
+            className="shrink-0 p-2.5 text-fg md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? t.nav.menuClose : t.nav.menuOpen}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X aria-hidden="true" size={24} /> : <Menu aria-hidden="true" size={24} />}
+          </button>
+        </div>
+      </header>
 
       <AnimatePresence>
         {open ? (
           <motion.nav
             id="mobile-menu"
             aria-label={t.nav.primary}
-            className="fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col justify-center gap-6 bg-bg px-[var(--spacing-gutter)] text-fg md:hidden"
+            className="fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col justify-center gap-6 overflow-y-auto bg-bg px-[var(--spacing-gutter)] text-fg md:hidden"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
@@ -90,6 +92,6 @@ export function Header() {
           </motion.nav>
         ) : null}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
