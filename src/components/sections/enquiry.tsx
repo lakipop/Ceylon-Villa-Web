@@ -215,7 +215,7 @@ export function Enquiry() {
               <button
                 type="submit"
                 disabled={submitState === "sending"}
-                className="border border-fg px-7 py-3.5 text-small tracking-[0.16em] uppercase text-fg transition-colors duration-300 hover:bg-fg hover:text-bg focus-visible:bg-fg focus-visible:text-bg active:scale-95 disabled:opacity-50"
+                className="border border-accent bg-accent px-7 py-3.5 text-small font-semibold tracking-[0.16em] uppercase text-bg transition-colors duration-300 hover:border-fg hover:bg-fg focus-visible:border-fg focus-visible:bg-fg active:scale-95 disabled:opacity-50"
               >
                 {submitState === "sending" ? t.enquiry.sending : t.enquiry.submit}
               </button>

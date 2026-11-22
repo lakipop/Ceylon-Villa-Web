@@ -1,20 +1,23 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   Design tokens: Palette 1 (Soft Alabaster & Ceylon Gold).
+   Design tokens: Warm Espresso & Ceylon Bronze.
    100% global tokens. Zero hardcoded colors outside this file.
 ------------------------------------------------------------------- */
 @theme {
-  --color-bg: #faf8f4;
-  --color-surface: #f2ede4;
-  --color-fg: #181614;
-  --color-muted: #5c574f;
-  --color-accent: #9a7218;
+  --color-bg: #faf7f2;
+  --color-surface: #ede4d6;
+  --color-nav: #2e231c;
+  --color-nav-fg: #faf7f2;
+  --color-fg: #1c1814;
+  --color-muted: #574e45;
+  --color-accent: #6e4b23;
+  --color-accent-text: #5c3d18;
   --color-accent-bright: #d4a942;
-  --color-border: #e4ddd0;
+  --color-border: #dfd4c3;
   --color-alert: #a3281a;
-  --color-media-fg: #faf8f4;
-  --color-scrim: #181614;
+  --color-media-fg: #faf7f2;
+  --color-scrim: #1c1814;
 
   /* Type */
   --font-display: var(--font-cormorant), "Times New Roman", serif;
@@ -93,9 +96,10 @@
 
   .eyebrow {
     font-size: var(--text-small);
-    letter-spacing: 0.18em;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
 
   .gutter {

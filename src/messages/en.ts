@@ -17,7 +17,7 @@ export const en = {
     home: "Ceylon Villa, home",
   },
   hero: {
-    word: "Ceylon Villa",
+    word: "CEYLON VILLA",
     place: "Matara, Sri Lanka",
     scroll: "Scroll",
     videoLabel: "Aerial footage of the Matara coast",

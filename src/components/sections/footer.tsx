@@ -94,9 +94,9 @@ export function Footer() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${t.footer.whatsapp} ${WHATSAPP_NUMBER}`}
-        className="fixed right-5 bottom-5 z-40 inline-flex items-center gap-2.5 border border-fg bg-bg/90 px-4 py-3 text-small tracking-[0.16em] uppercase text-fg backdrop-blur-md transition-colors duration-300 hover:bg-fg hover:text-bg focus-visible:bg-fg focus-visible:text-bg active:scale-95"
+        className="fixed right-5 bottom-5 z-40 inline-flex items-center gap-2.5 border border-accent bg-accent px-4 py-3 text-small font-semibold tracking-[0.16em] uppercase text-bg shadow-sm transition-colors duration-300 hover:border-nav hover:bg-nav focus-visible:border-nav focus-visible:bg-nav active:scale-95"
       >
-        <MessageCircle aria-hidden="true" size={16} className="text-accent" />
+        <MessageCircle aria-hidden="true" size={16} />
         <span>{t.footer.whatsapp}</span>
       </a>
     </>
