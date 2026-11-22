@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
 import { enquirySchema, type EnquiryResponse } from "@/lib/schemas";
+import { SITE } from "@/lib/site";
+
+const TEST_RECIPIENT = "lakindu.once@gmail.com";
+const DEFAULT_RECIPIENTS: readonly string[] = [
+  ...SITE.contacts.map((contact) => contact.email),
+  TEST_RECIPIENT,
+];
 
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS = 5;
@@ -37,10 +44,14 @@ export async function POST(request: Request): Promise<NextResponse<EnquiryRespon
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.ENQUIRY_TO_EMAIL;
   const fromEmail = process.env.ENQUIRY_FROM_EMAIL;
+  const envRecipients = process.env.ENQUIRY_TO_EMAIL
+    ?.split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+  const toEmails = envRecipients && envRecipients.length > 0 ? envRecipients : [...DEFAULT_RECIPIENTS];
 
-  if (!apiKey || !toEmail || !fromEmail) {
+  if (!apiKey || !fromEmail || toEmails.length === 0) {
     return NextResponse.json({ ok: false, code: "not_configured" }, { status: 503 });
   }
 
@@ -65,9 +76,9 @@ export async function POST(request: Request): Promise<NextResponse<EnquiryRespon
       },
       body: JSON.stringify({
         from: fromEmail,
-        to: [toEmail],
+        to: toEmails,
         reply_to: email,
-        subject: `Ceylon Villa enquiry: ${name} (${checkIn} to ${checkOut})`,
+        subject: `CEYLON VILLA enquiry: ${name} (${checkIn} to ${checkOut})`,
         text,
       }),
     });
