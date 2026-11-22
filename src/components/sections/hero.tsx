@@ -54,6 +54,7 @@ export function Hero() {
 
   const wordOpacity = useTransform(scrollYProgress, [0, HERO_TEXT_FADE_END], [1, 0]);
   const wordY = useTransform(scrollYProgress, [0, HERO_TEXT_FADE_END], ["0%", "-10%"]);
+  const wordScale = useTransform(collapse, [0, 1], [1.15, 1]);
   const sideOpacity = useTransform(collapse, [0, 0.55], [0, 1]);
   const leftX = useTransform(collapse, [0, 1], ["-60%", "0%"]);
   const rightX = useTransform(collapse, [0, 1], ["60%", "0%"]);
@@ -82,8 +83,8 @@ export function Hero() {
 
           <motion.h1
             aria-label={t.hero.word}
-            className="display absolute inset-x-0 bottom-[13svh] px-4 whitespace-nowrap text-center text-[clamp(2.85rem,8vw,9.5rem)] text-media-fg"
-            style={reduced ? undefined : { opacity: wordOpacity, y: wordY }}
+            className="display absolute inset-x-0 bottom-[13svh] px-4 whitespace-nowrap text-center text-[clamp(2rem,4.4vw,4.75rem)] tracking-[0.04em] text-media-fg"
+            style={reduced ? undefined : { opacity: wordOpacity, y: wordY, scale: wordScale }}
           >
             <span aria-hidden="true" className="inline-flex overflow-hidden pb-[0.12em]">
               {letters.map((letter, index) => (
