@@ -118,6 +118,7 @@ export const en = {
   footer: {
     address: "Address",
     listings: "Listings",
+    airbnb: "Airbnb",
     agoda: "Agoda",
     booking: "Booking.com",
     whatsapp: "WhatsApp",

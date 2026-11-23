@@ -1,8 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
+import { SITE } from "@/lib/site";
 import { t } from "@/lib/i18n";
 
-const REVIEW_URL = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL ?? "";
+const REVIEW_URL = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL || SITE.reviewUrl;
 
 export function Reviews() {
   return (

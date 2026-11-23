@@ -34,10 +34,14 @@ export const SITE = {
     validTo: "31 Dec 2026",
   },
   listings: {
+    airbnb:
+      "https://www.airbnb.co.uk/rooms/1539117260208528563?unique_share_id=6fdd365f-9935-4f1c-b0e6-c3d52c83863e&viralityEntryPoint=1&s=76",
     agoda:
       "https://www.agoda.com/ceylon-villa-h82588305/hotel/matara-lk.html?cid=1844104&ds=gqaixrlR6Kx0ExOU",
     booking: "https://www.booking.com/hotel/lk/ceylon-villa-matara.html",
   },
+  reviewUrl:
+    "https://www.google.com/travel/search?ts=CAESCgoCCAMKAggDEAAaHhIcEhQKBwjqDxALGBgSBwjqDxALGBkYATIECAAQACoHCgU6A0xLUg&qs=CAEyFENnc0kwdmE3OC12Nl84RzVBUkFCOAlCCRH_YxZPc9msOkIJETkqOai00RV3QgkRkYvykzMZlfc&utm_campaign=sharing&utm_medium=link_btn&utm_source=htls",
 } as const;
 
 export const MEDIA = {

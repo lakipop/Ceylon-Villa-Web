@@ -72,6 +72,11 @@ export function Footer() {
             <p className="eyebrow">{t.footer.listings}</p>
             <ul className="mt-3 space-y-2.5">
               <li>
+                <a href={SITE.listings.airbnb} target="_blank" rel="noopener noreferrer" className="text-fg underline underline-offset-4">
+                  {t.footer.airbnb}
+                </a>
+              </li>
+              <li>
                 <a href={SITE.listings.agoda} target="_blank" rel="noopener noreferrer" className="text-fg underline underline-offset-4">
                   {t.footer.agoda}
                 </a>

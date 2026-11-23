@@ -83,6 +83,15 @@ export function Enquiry() {
             <p className="eyebrow">{t.enquiry.listings}</p>
             <div className="mt-5 flex flex-wrap gap-3">
               <a
+                href={SITE.listings.airbnb}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 border border-fg px-6 py-3 text-small tracking-[0.16em] uppercase text-fg transition-colors duration-300 hover:bg-fg hover:text-bg focus-visible:bg-fg focus-visible:text-bg active:scale-95"
+              >
+                {t.footer.airbnb}
+                <ArrowUpRight aria-hidden="true" size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
                 href={SITE.listings.agoda}
                 target="_blank"
                 rel="noopener noreferrer"
