@@ -51,6 +51,10 @@ export async function POST(request: Request): Promise<NextResponse<EnquiryRespon
     .filter(Boolean);
   const toEmails = envRecipients && envRecipients.length > 0 ? envRecipients : [...DEFAULT_RECIPIENTS];
 
+  if (!apiKey || !fromEmail || toEmails.length === 0) {
+    return NextResponse.json({ ok: false, code: "not_configured" }, { status: 503 });
+  }
+
   const { name, email, checkIn, checkOut, guests, message } = parsed.data;
   const subject = `CEYLON VILLA enquiry: ${name} (${checkIn} to ${checkOut})`;
   const text = [
@@ -65,56 +69,22 @@ export async function POST(request: Request): Promise<NextResponse<EnquiryRespon
     .join("\n");
 
   try {
-    if (apiKey && fromEmail && toEmails.length > 0) {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: fromEmail,
-          to: toEmails,
-          reply_to: email,
-          subject,
-          text,
-        }),
-      });
-
-      if (!res.ok) {
-        return NextResponse.json({ ok: false, code: "server" }, { status: 502 });
-      }
-      return NextResponse.json({ ok: true });
-    }
-
-    // Fallback: FormSubmit AJAX (no API key required; 1-time activation on primary email)
-    const primaryRecipient = TEST_RECIPIENT;
-    const ccRecipients = SITE.contacts.map((contact) => contact.email).join(",");
-    const referer = request.headers.get("origin") || request.headers.get("referer") || "https://ceylon-villa-web.vercel.app";
-
-    const fallbackRes = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(primaryRecipient)}`, {
+    const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Referer: referer,
       },
       body: JSON.stringify({
-        name,
-        email,
-        "Check-in": checkIn,
-        "Check-out": checkOut,
-        Guests: String(guests),
-        Message: message || "—",
-        _subject: subject,
-        _replyto: email,
-        _cc: ccRecipients,
-        _template: "table",
-        _captcha: "false",
+        from: fromEmail,
+        to: toEmails,
+        reply_to: email,
+        subject,
+        text,
       }),
     });
 
-    if (!fallbackRes.ok) {
+    if (!res.ok) {
       return NextResponse.json({ ok: false, code: "server" }, { status: 502 });
     }
     return NextResponse.json({ ok: true });
