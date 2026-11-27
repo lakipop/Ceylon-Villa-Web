@@ -11,8 +11,6 @@ import { SITE } from "@/lib/site";
 
 type SubmitState = "idle" | "sending" | "sent" | "error";
 
-const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/lakindu.once@gmail.com";
-
 const FIELD_CLASS =
   "w-full border-b hairline bg-transparent py-3 text-fg placeholder:text-muted focus:border-accent focus:outline-none";
 
@@ -61,38 +59,10 @@ export function Enquiry() {
         return;
       }
 
-      if (payload.code === "not_configured") {
-        const ccRecipients = SITE.contacts.map((contact) => contact.email).join(",");
-        const directRes = await fetch(FORMSUBMIT_ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            Name: values.name,
-            Email: values.email,
-            "Check-in": values.checkIn,
-            "Check-out": values.checkOut,
-            Guests: String(values.guests),
-            Message: values.message || "No additional message",
-            _subject: `CEYLON VILLA enquiry: ${values.name} (${values.checkIn} to ${values.checkOut})`,
-            _replyto: values.email,
-            _cc: ccRecipients,
-            _template: "table",
-            _captcha: "false",
-          }),
-        });
-
-        if (directRes.ok) {
-          setSubmitState("sent");
-          reset({ name: "", email: "", checkIn: today, checkOut: "", guests: 2, message: "", website: "" });
-          return;
-        }
-      }
-
       setSubmitState("error");
-      if (payload.code === "rate_limited") {
+      if (payload.code === "not_configured") {
+        setErrorText(t.enquiry.errorNotConfigured);
+      } else if (payload.code === "rate_limited") {
         setErrorText(t.enquiry.errorRateLimit);
       } else {
         setErrorText(t.enquiry.errorServer);
